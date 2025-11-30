@@ -1,25 +1,31 @@
-/* Fundo Moderno Ajustado para Celular */
-body {
+/* Reset Básico */
+* {
+  box-sizing: border-box;
   margin: 0;
-  padding: 20px; /* Adiciona margem para não colar na borda do celular */
+  padding: 0;
+}
+
+body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  min-height: 100vh; /* Garante que ocupa a tela toda */
+  min-height: 100vh; /* Garante altura total da tela */
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box; /* Garante que o padding não estoure a tela */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  padding: 20px; /* Margem de segurança para não colar nas bordas */
 }
 
 /* O Cartão Central */
 .card {
   background: #ffffff;
-  padding: 30px 20px; /* Mais espaço interno */
+  padding: 30px 20px;
   border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   width: 100%;
-  max-width: 400px; /* Largura máxima ideal para celular */
+  max-width: 400px; /* Tamanho ideal para celular */
   text-align: center;
+  margin: auto; /* Reforço para centralizar */
 }
 
 /* Títulos */
@@ -54,13 +60,14 @@ input {
   padding: 12px;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
-  font-size: 16px; /* Tamanho 16px evita zoom automático no iPhone */
+  font-size: 16px; /* 16px evita zoom indesejado no iPhone */
   outline: none;
-  box-sizing: border-box;
+  background: #f8fafc;
 }
 
 input:focus {
   border-color: #2563eb;
+  background: #fff;
 }
 
 /* Botão */
@@ -75,4 +82,14 @@ input:focus {
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
+  transition: transform 0.1s;
+}
+
+.btn-enviar:active {
+  transform: scale(0.98); /* Efeito de clique */
+}
+
+.btn-enviar:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
 }
