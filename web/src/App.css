@@ -1,88 +1,122 @@
-/* --- RESET GERAL --- */
+/* --- BASE --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0f172a; /* Fundo Escuro */
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  background-color: #020617; /* Preto azulado chique */
+  color: #f1f5f9;
+  overflow-x: hidden;
 }
 
-/* --- ESTILOS DA LANDING PAGE --- */
-.landing-container {
-  text-align: center;
-  width: 100%;
-}
-
+/* --- NAVBAR --- */
 .navbar {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 5%; background: rgba(15, 23, 42, 0.95);
-  position: fixed; top: 0; width: 100%; z-index: 100; border-bottom: 1px solid #1e293b;
+  padding: 20px 5%; background: rgba(2, 6, 23, 0.9);
+  position: fixed; width: 100%; top: 0; z-index: 999; border-bottom: 1px solid #1e293b;
+}
+.logo { font-size: 1.4rem; font-weight: 800; color: white; }
+.beta { background: #6366f1; font-size: 0.6rem; padding: 2px 5px; border-radius: 4px; vertical-align: middle; }
+.btn-outline {
+  background: transparent; border: 1px solid #94a3b8; color: #fff;
+  padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem;
 }
 
-.logo { font-size: 1.5rem; font-weight: 800; color: white; }
-.btn-login-nav {
-  background: transparent; border: 1px solid #3b82f6; color: #3b82f6;
-  padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold;
-}
-
+/* --- HERO --- */
 .hero-section {
-  margin-top: 80px; padding: 60px 20px;
-  background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
-  min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 140px 20px 80px; text-align: center;
+  background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 70%);
 }
-
-.tag { background: #1e293b; color: #38bdf8; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 20px; border: 1px solid #334155; }
-
-h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.1; font-weight: 800; }
-.destaque { color: #34d399; }
-
-p.subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin-bottom: 40px; }
+.tag-destaque {
+  background: rgba(99, 102, 241, 0.1); color: #818cf8; border: 1px solid #4338ca;
+  padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+  display: inline-block; margin-bottom: 20px;
+}
+h1 { font-size: 3rem; line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+.destaque-texto {
+  background: linear-gradient(to right, #4ade80, #3b82f6);
+  -webkit-background-clip: text; color: transparent;
+}
+.subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; }
 
 .btn-cta {
-  background: #10b981; color: white; padding: 18px 40px; border-radius: 50px;
-  font-size: 1.2rem; font-weight: bold; border: none; cursor: pointer;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); transition: transform 0.2s;
-  text-decoration: none; display: inline-block;
+  background: #10b981; color: #020617; border: none; padding: 18px 36px;
+  font-size: 1.2rem; font-weight: 800; border-radius: 50px; cursor: pointer;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); transition: transform 0.2s;
 }
-.btn-cta:hover { transform: scale(1.05); }
+.btn-cta:hover { transform: scale(1.05); background: #34d399; }
+.pulse { animation: pulse 2s infinite; }
+.small-text { margin-top: 15px; font-size: 0.85rem; color: #64748b; }
 
-/* --- ESTILOS DO PAINEL (LOGIN) --- */
+/* --- BENEFITS --- */
+.section-dark { padding: 80px 20px; text-align: center; background: #0f172a; }
+.section-dark h2 { font-size: 2.2rem; margin-bottom: 40px; }
+.grid-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.benefit-card {
+  background: #1e293b; padding: 30px; border-radius: 16px; width: 100%; max-width: 320px;
+  border: 1px solid #334155; text-align: left;
+}
+.benefit-card h3 { color: #f8fafc; margin-bottom: 10px; font-size: 1.3rem; }
+.benefit-card p { color: #94a3b8; font-size: 1rem; }
+
+/* --- PRICING --- */
+.section-pricing { padding: 80px 20px; background: #020617; display: flex; justify-content: center; }
+.pricing-box {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #6366f1; border-radius: 24px; padding: 40px 30px;
+  width: 100%; max-width: 400px; text-align: center; position: relative;
+}
+.desconto-tag {
+  position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+  background: #6366f1; color: white; padding: 5px 15px; border-radius: 20px;
+  font-weight: bold; font-size: 0.85rem; text-transform: uppercase;
+}
+.price-container { margin: 20px 0; }
+.riscado { text-decoration: line-through; color: #64748b; display: block; font-size: 1.1rem; }
+.valor { font-size: 3.5rem; font-weight: 800; color: white; }
+.periodo { font-size: 1.2rem; color: #94a3b8; }
+
+.check-list { list-style: none; text-align: left; margin: 30px 0; }
+.check-list li { margin-bottom: 12px; font-size: 1rem; color: #cbd5e1; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+
+.btn-cta-full {
+  width: 100%; background: #6366f1; color: white; border: none; padding: 16px;
+  font-size: 1.1rem; font-weight: 800; border-radius: 12px; cursor: pointer;
+  transition: 0.3s;
+}
+.btn-cta-full:hover { background: #4f46e5; }
+.footer-price { margin-top: 15px; font-size: 0.8rem; color: #64748b; }
+
+/* --- PAINEL & LOGIN --- */
 .painel-container {
-  display: flex; justify-content: center; align-items: center;
-  height: 100vh; padding: 20px;
+  min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
 }
-
 .card {
-  background: #1e293b; /* Cartão Escuro */
-  padding: 40px; border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  width: 100%; max-width: 420px; border: 1px solid #334155;
-  text-align: center;
+  background: white; color: #0f172a; padding: 30px; border-radius: 16px; width: 100%; max-width: 400px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center;
 }
-
-.card h2 { color: white; margin-bottom: 10px; }
-.card p { color: #94a3b8; margin-bottom: 30px; }
-
+.card h2 { margin-bottom: 5px; color: #020617; }
+.card p { color: #64748b; margin-bottom: 20px; font-size: 0.9rem; }
 .input-group { text-align: left; margin-bottom: 15px; }
-.input-group label { display: block; color: #cbd5e1; margin-bottom: 5px; font-size: 0.9rem; }
-
-input {
-  width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155;
-  border-radius: 8px; color: white; font-size: 16px; outline: none;
+.input-group label { display: block; font-size: 0.85rem; font-weight: bold; color: #475569; margin-bottom: 5px; }
+.card input {
+  width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; outline: none;
 }
-input:focus { border-color: #3b82f6; }
-
+.card input:focus { border-color: #6366f1; }
 .btn-enviar {
-  width: 100%; padding: 15px; background: #3b82f6; color: white;
-  border: none; border-radius: 8px; font-size: 1rem; font-weight: bold;
-  cursor: pointer; margin-top: 10px;
+  width: 100%; padding: 16px; background: #10b981; border: none; border-radius: 8px;
+  color: white; font-weight: bold; font-size: 1rem; cursor: pointer; margin-top: 10px;
 }
-.btn-enviar:disabled { background: #475569; }
+.btn-voltar { background: none; border: none; color: #64748b; margin-top: 15px; cursor: pointer; text-decoration: underline; }
 
 /* Celular */
 @media (max-width: 600px) {
   h1 { font-size: 2.2rem; }
+  .hero-section { padding-top: 100px; }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
