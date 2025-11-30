@@ -2,45 +2,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #020617; /* Preto azulado chique */
+  background-color: #020617; /* Preto azulado */
   color: #f1f5f9;
   overflow-x: hidden;
+  /* Removi o display flex do body para evitar que o site fique 'de lado' no PC */
+  display: block; 
 }
 
 /* --- NAVBAR --- */
 .navbar {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 5%; background: rgba(2, 6, 23, 0.9);
-  position: fixed; width: 100%; top: 0; z-index: 999; border-bottom: 1px solid #1e293b;
+  padding: 15px 5%; 
+  background: rgba(2, 6, 23, 0.95);
+  position: fixed; width: 100%; top: 0; left: 0; z-index: 999; 
+  border-bottom: 1px solid #1e293b;
+  backdrop-filter: blur(10px); /* Efeito de vidro chique */
 }
-.logo { font-size: 1.4rem; font-weight: 800; color: white; }
-.beta { background: #6366f1; font-size: 0.6rem; padding: 2px 5px; border-radius: 4px; vertical-align: middle; }
+.logo { font-size: 1.4rem; font-weight: 800; color: white; display: flex; align-items: center; gap: 8px; }
+.beta { background: #6366f1; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
 .btn-outline {
   background: transparent; border: 1px solid #94a3b8; color: #fff;
-  padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem;
+  padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: 0.3s;
 }
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
-/* --- HERO --- */
+/* --- HERO SECTION --- */
 .hero-section {
-  padding: 140px 20px 80px; text-align: center;
+  padding: 140px 20px 80px; 
+  text-align: center;
   background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #020617 70%);
+  width: 100%; /* Garante largura total */
+  display: flex; flex-direction: column; align-items: center; /* Centraliza tudo */
 }
+.hero-content { max-width: 800px; width: 100%; }
+
 .tag-destaque {
   background: rgba(99, 102, 241, 0.1); color: #818cf8; border: 1px solid #4338ca;
-  padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
-  display: inline-block; margin-bottom: 20px;
+  padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
+  display: inline-block; margin-bottom: 25px;
 }
-h1 { font-size: 3rem; line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+h1 { font-size: 3.5rem; line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
 .destaque-texto {
   background: linear-gradient(to right, #4ade80, #3b82f6);
   -webkit-background-clip: text; color: transparent;
 }
-.subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; }
+.subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; padding: 0 10px; line-height: 1.5; }
 
 .btn-cta {
-  background: #10b981; color: #020617; border: none; padding: 18px 36px;
+  background: #10b981; color: #020617; border: none; padding: 18px 40px;
   font-size: 1.2rem; font-weight: 800; border-radius: 50px; cursor: pointer;
   box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); transition: transform 0.2s;
 }
@@ -48,71 +60,119 @@ h1 { font-size: 3rem; line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
 .pulse { animation: pulse 2s infinite; }
 .small-text { margin-top: 15px; font-size: 0.85rem; color: #64748b; }
 
-/* --- BENEFITS --- */
-.section-dark { padding: 80px 20px; text-align: center; background: #0f172a; }
-.section-dark h2 { font-size: 2.2rem; margin-bottom: 40px; }
-.grid-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.benefit-card {
-  background: #1e293b; padding: 30px; border-radius: 16px; width: 100%; max-width: 320px;
-  border: 1px solid #334155; text-align: left;
+/* --- NOVA SEÇÃO VISUAL (O Celular Fake) --- */
+.section-visual {
+  padding: 80px 20px; text-align: center; background: #0b1120;
+  width: 100%;
+  display: flex; flex-direction: column; align-items: center;
 }
-.benefit-card h3 { color: #f8fafc; margin-bottom: 10px; font-size: 1.3rem; }
-.benefit-card p { color: #94a3b8; font-size: 1rem; }
+.section-visual h2 { font-size: 2rem; margin-bottom: 15px; max-width: 800px; }
+.visual-subtitle { color: #94a3b8; margin-bottom: 50px; font-size: 1.1rem; }
+
+.phone-mockup {
+  width: 320px; height: 600px; background: #000; border-radius: 45px;
+  border: 10px solid #334155; margin: 0 auto; position: relative; overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+.phone-screen { height: 100%; background: #e5ddd5; /* Cor Zap Padrão */ }
+.whatsapp-header {
+  background: #008069; color: white; padding: 15px 20px; text-align: left; display: flex; align-items: center;
+  padding-top: 30px; /* Espaço para a "câmera" do celular */
+}
+.wa-avatar { background: #fff; width: 40px; height: 40px; border-radius: 50%; text-align: center; line-height: 40px; margin-right: 12px; font-size: 22px;}
+.wa-name { font-weight: bold; font-size: 1rem; }
+.wa-name span { font-weight: normal; font-size: 0.75rem; display: block; opacity: 0.8; }
+
+.chat-container { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.message-bubble {
+  max-width: 85%; padding: 12px 15px; border-radius: 12px; position: relative; font-size: 0.95rem; text-align: left; color: #111827;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1); line-height: 1.4;
+}
+.received { background: #fff; align-self: flex-start; border-top-left-radius: 0; }
+.sent { background: #dcf8c6; align-self: flex-end; border-top-right-radius: 0; }
+.time { display: block; text-align: right; font-size: 0.7rem; color: #9ca3af; margin-top: 5px; }
+
+/* --- BENEFITS --- */
+.section-dark { 
+  padding: 80px 20px; text-align: center; background: #0f172a; width: 100%;
+  display: flex; flex-direction: column; align-items: center;
+}
+.section-dark h2 { font-size: 2.5rem; margin-bottom: 50px; }
+.grid-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; width: 100%; }
+.benefit-card {
+  background: #1e293b; padding: 35px; border-radius: 20px; width: 100%; max-width: 350px;
+  border: 1px solid #334155; text-align: left; transition: transform 0.2s;
+}
+.benefit-card:hover { transform: translateY(-5px); border-color: #6366f1; }
+.benefit-card h3 { color: #f8fafc; margin-bottom: 15px; font-size: 1.4rem; }
+.benefit-card p { color: #94a3b8; font-size: 1rem; line-height: 1.6; }
 
 /* --- PRICING --- */
-.section-pricing { padding: 80px 20px; background: #020617; display: flex; justify-content: center; }
+.section-pricing { 
+  padding: 80px 20px 120px; background: #020617; width: 100%;
+  display: flex; justify-content: center; 
+}
 .pricing-box {
   background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-  border: 2px solid #6366f1; border-radius: 24px; padding: 40px 30px;
-  width: 100%; max-width: 400px; text-align: center; position: relative;
+  border: 2px solid #6366f1; border-radius: 24px; padding: 50px 30px;
+  width: 100%; max-width: 420px; text-align: center; position: relative;
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
 }
 .desconto-tag {
   position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-  background: #6366f1; color: white; padding: 5px 15px; border-radius: 20px;
-  font-weight: bold; font-size: 0.85rem; text-transform: uppercase;
+  background: #6366f1; color: white; padding: 6px 16px; border-radius: 20px;
+  font-weight: bold; font-size: 0.9rem; text-transform: uppercase; white-space: nowrap;
 }
-.price-container { margin: 20px 0; }
-.riscado { text-decoration: line-through; color: #64748b; display: block; font-size: 1.1rem; }
-.valor { font-size: 3.5rem; font-weight: 800; color: white; }
+.price-container { margin: 25px 0; }
+.riscado { text-decoration: line-through; color: #64748b; display: block; font-size: 1.2rem; }
+.valor { font-size: 4rem; font-weight: 800; color: white; line-height: 1; }
 .periodo { font-size: 1.2rem; color: #94a3b8; }
 
-.check-list { list-style: none; text-align: left; margin: 30px 0; }
-.check-list li { margin-bottom: 12px; font-size: 1rem; color: #cbd5e1; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+.check-list { list-style: none; text-align: left; margin: 35px 0; padding-left: 10px; }
+.check-list li { margin-bottom: 12px; font-size: 1.05rem; color: #e2e8f0; border-bottom: 1px solid #334155; padding-bottom: 8px; }
 
 .btn-cta-full {
-  width: 100%; background: #6366f1; color: white; border: none; padding: 16px;
-  font-size: 1.1rem; font-weight: 800; border-radius: 12px; cursor: pointer;
+  width: 100%; background: #6366f1; color: white; border: none; padding: 18px;
+  font-size: 1.2rem; font-weight: 800; border-radius: 12px; cursor: pointer;
   transition: 0.3s;
 }
-.btn-cta-full:hover { background: #4f46e5; }
-.footer-price { margin-top: 15px; font-size: 0.8rem; color: #64748b; }
+.btn-cta-full:hover { background: #4f46e5; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+.footer-price { margin-top: 20px; font-size: 0.9rem; color: #94a3b8; }
 
-/* --- PAINEL & LOGIN --- */
+/* --- FOOTER --- */
+.footer { padding: 40px 20px; text-align: center; background: #020617; border-top: 1px solid #1e293b; color: #64748b; width: 100%; }
+
+/* --- PAINEL (Área do Cliente) --- */
 .painel-container {
   min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+  width: 100%;
 }
 .card {
-  background: white; color: #0f172a; padding: 30px; border-radius: 16px; width: 100%; max-width: 400px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center;
+  background: white; color: #0f172a; padding: 40px 30px; border-radius: 20px; width: 100%; max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5); text-align: center;
 }
-.card h2 { margin-bottom: 5px; color: #020617; }
-.card p { color: #64748b; margin-bottom: 20px; font-size: 0.9rem; }
+.card h2 { margin-bottom: 10px; color: #020617; font-size: 1.8rem; }
+.card p { color: #64748b; margin-bottom: 30px; font-size: 1rem; }
 .input-group { text-align: left; margin-bottom: 15px; }
-.input-group label { display: block; font-size: 0.85rem; font-weight: bold; color: #475569; margin-bottom: 5px; }
+.input-group label { display: block; font-size: 0.9rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
 .card input {
-  width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; outline: none;
+  width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 16px; outline: none; transition: 0.2s;
 }
-.card input:focus { border-color: #6366f1; }
+.card input:focus { border-color: #6366f1; background: #fff; }
 .btn-enviar {
-  width: 100%; padding: 16px; background: #10b981; border: none; border-radius: 8px;
-  color: white; font-weight: bold; font-size: 1rem; cursor: pointer; margin-top: 10px;
+  width: 100%; padding: 16px; background: #10b981; border: none; border-radius: 10px;
+  color: white; font-weight: 800; font-size: 1.1rem; cursor: pointer; margin-top: 15px;
+  transition: 0.2s;
 }
-.btn-voltar { background: none; border: none; color: #64748b; margin-top: 15px; cursor: pointer; text-decoration: underline; }
+.btn-enviar:hover { background: #059669; }
+.btn-voltar { background: none; border: none; color: #64748b; margin-top: 20px; cursor: pointer; text-decoration: underline; font-size: 0.9rem; }
 
-/* Celular */
+/* RESPONSIVO (Ajustes para Celular) */
 @media (max-width: 600px) {
   h1 { font-size: 2.2rem; }
-  .hero-section { padding-top: 100px; }
+  .hero-section { padding-top: 100px; padding-bottom: 40px; }
+  .section-visual h2, .section-dark h2 { font-size: 1.6rem; }
+  .phone-mockup { width: 100%; max-width: 300px; height: 500px; }
 }
 
 @keyframes pulse {
