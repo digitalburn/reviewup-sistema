@@ -45,7 +45,7 @@ function App() {
     setLoading(false)
   }
 
-  // --- LANDING PAGE PERSUASIVA ---
+  // --- LANDING PAGE VENDEDORA ---
   if (tela === 'landing') {
     return (
       <div className="landing-container">
@@ -54,12 +54,12 @@ function App() {
           <button onClick={() => setTela('painel')} className="btn-outline">Área do Cliente</button>
         </nav>
 
-        {/* HERO SECTION - Promessa Forte */}
+        {/* HERO SECTION */}
         <header className="hero-section">
-          <span className="tag-destaque">🔥 Estratégia usada pelos líderes de mercado</span>
+          <span className="tag-destaque">🔥 O Segredo dos Negócios Locais de Sucesso</span>
           <h1>Não adianta ter o melhor serviço se <br /><span className="destaque-texto">ninguém te encontra.</span></h1>
           <p className="subtitle">
-            Seu concorrente tem mais estrelas que você? O ReviewUp transforma seus clientes em fãs que te colocam no <strong>Topo do Google</strong> automaticamente pelo WhatsApp.
+            Transforme clientes em fãs que te colocam no <strong>Topo do Google</strong> automaticamente pelo WhatsApp.
           </p>
           
           <div className="cta-group">
@@ -73,7 +73,34 @@ function App() {
           </div>
         </header>
 
-        {/* DOR E PROBLEMA (PNL) */}
+        {/* --- NOVA SEÇÃO VISUAL (O CELULAR) --- */}
+        <section className="section-visual">
+          <h2>Veja a mágica acontecendo no celular do seu cliente 📲</h2>
+          <p className="visual-subtitle">É assim que ele recebe, 30 segundos depois de sair da sua loja.</p>
+          
+          <div className="phone-mockup">
+            <div className="phone-screen">
+              <div className="whatsapp-header">
+                <div className="wa-avatar">🏪</div>
+                <div className="wa-name">Sua Empresa <br/><span>online</span></div>
+              </div>
+              <div className="chat-container">
+                <div className="message-bubble received">
+                  Olá João! 👋 Obrigado pela preferência na Barbearia do Sérgio.<br/><br/>
+                  Sua opinião é muito importante para nós. Poderia nos avaliar rapidinho?<br/><br/>
+                  É só clicar aqui: <strong>👉 google.com/avaliar</strong>
+                  <span className="time">10:30 ✓✓</span>
+                </div>
+                <div className="message-bubble sent">
+                  Claro, vou avaliar agora! Adorei o serviço. ⭐⭐⭐⭐⭐
+                  <span className="time">10:31 ✓✓</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DOR E PROBLEMA */}
         <section className="section-dark">
           <h2>Você está deixando dinheiro na mesa?</h2>
           <div className="grid-benefits">
@@ -92,7 +119,7 @@ function App() {
           </div>
         </section>
 
-        {/* OFERTA IRRECUSÁVEL (Ancoragem) */}
+        {/* OFERTA IRRECUSÁVEL */}
         <section className="section-pricing">
           <div className="pricing-box">
             <div className="desconto-tag">OFERTA ANUAL (R$ 1,30 por dia)</div>
@@ -127,7 +154,7 @@ function App() {
     )
   }
 
-  // --- PAINEL DO CLIENTE (Mantido igual) ---
+  // --- PAINEL DO CLIENTE ---
   return (
     <div className="painel-container">
       <div className="card">
