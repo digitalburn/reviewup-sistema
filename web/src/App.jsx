@@ -14,7 +14,7 @@ function App() {
     
     try {
       // Enviando para o motor na porta 3001
-      const resposta = await fetch('http://127.0.0.1:3001/enviar-zap', {
+      const resposta = await fetch('https://reviewup-sistema.onrender.com/enviar-zap', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
