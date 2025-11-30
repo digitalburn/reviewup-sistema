@@ -5,33 +5,33 @@ function App() {
   const [telefone, setTelefone] = useState('')
   const [nome, setNome] = useState('')
   const [link, setLink] = useState('')
+  const [senha, setSenha] = useState('') // Campo novo
   const [loading, setLoading] = useState(false)
 
-  // 1. Assim que o site abre, tenta buscar o link salvo na memória
   useEffect(() => {
-    const linkSalvo = localStorage.getItem('reviewup_link_google')
-    if (linkSalvo) {
-      setLink(linkSalvo)
-    }
+    const linkSalvo = localStorage.getItem('reviewup_link')
+    const senhaSalva = localStorage.getItem('reviewup_senha')
+    if (linkSalvo) setLink(linkSalvo)
+    if (senhaSalva) setSenha(senhaSalva)
   }, [])
 
   async function enviarMensagem() {
-    if (!telefone || !nome || !link) return alert('Por favor, preencha todos os campos!')
-    
-    // 2. Salva o link na memória do navegador para a próxima vez
-    localStorage.setItem('reviewup_link_google', link)
+    if (!telefone || !nome || !link || !senha) return alert('Preencha tudo, inclusive a SENHA!')
     
     setLoading(true)
+    localStorage.setItem('reviewup_link', link)
+    localStorage.setItem('reviewup_senha', senha)
     
     try {
-      // Usando o servidor da nuvem (Render)
+      // Manda para o servidor na nuvem
       const resposta = await fetch('https://reviewup-sistema.onrender.com/enviar-zap', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          phone: telefone,
-          nome: nome,
-          link: link
+          phone: telefone, 
+          nome, 
+          link, 
+          senha // Envia a senha junto
         })
       })
 
@@ -41,54 +41,42 @@ function App() {
         alert(`✅ Sucesso! Mensagem enviada para ${nome}!`)
         setTelefone('')
         setNome('')
-        // O link NÃO é apagado, ele continua lá para o próximo envio
       } else {
-        alert('❌ Erro: ' + JSON.stringify(dados))
+        alert('❌ Erro: ' + (dados.error || 'Falha no envio'))
       }
     } catch (erro) {
-      alert('⚠️ Erro de conexão. O servidor pode estar dormindo (aguarde 1 min e tente de novo).')
+      alert('⚠️ Erro de conexão. Tente novamente.')
     }
-
     setLoading(false)
   }
 
   return (
     <div className="card">
       <h1>🚀 ReviewUp</h1>
-      <p>Gerenciador de Avaliações Inteligente</p>
+      <p>Área do Cliente</p>
+
+      <div className="campo-grupo">
+        <label>Senha de Acesso</label>
+        <input type="password" placeholder="Senha da Loja" value={senha} onChange={e => setSenha(e.target.value)} />
+      </div>
 
       <div className="campo-grupo">
         <label>Nome do Cliente</label>
-        <input 
-          type="text" 
-          placeholder="Ex: Andreia Silva"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
+        <input type="text" placeholder="Ex: Andreia" value={nome} onChange={e => setNome(e.target.value)} />
       </div>
 
       <div className="campo-grupo">
-        <label>WhatsApp (DDD + Número)</label>
-        <input 
-          type="text" 
-          placeholder="Ex: 5511999998888"
-          value={telefone}
-          onChange={(e) => setTelefone(e.target.value)}
-        />
+        <label>WhatsApp</label>
+        <input type="text" placeholder="Ex: 5511999998888" value={telefone} onChange={e => setTelefone(e.target.value)} />
       </div>
 
       <div className="campo-grupo">
-        <label>Link de Avaliação (Google)</label>
-        <input 
-          type="text" 
-          placeholder="Cole o link aqui (Ficará salvo!)"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-        />
+        <label>Link de Avaliação</label>
+        <input type="text" placeholder="Cole o link aqui..." value={link} onChange={e => setLink(e.target.value)} />
       </div>
 
       <button className="btn-enviar" onClick={enviarMensagem} disabled={loading}>
-        {loading ? 'Enviando...' : 'ENVIAR SOLICITAÇÃO ➤'}
+        {loading ? 'Verificando...' : 'ENVIAR ➤'}
       </button>
     </div>
   )
