@@ -11,8 +11,7 @@ function App() {
   const [senha, setSenha] = useState('')
   const [loading, setLoading] = useState(false)
 
-  // 👇 ZAP DA ANDREIA PARA VENDAS 👇
-  const whatsappVendas = "5511992514436"; 
+  const whatsappVendas = "5511992514436"; // ZAP DA ANDREIA
 
   useEffect(() => {
     const linkSalvo = localStorage.getItem('reviewup_link')
@@ -45,7 +44,7 @@ function App() {
     setLoading(false)
   }
 
-  // --- LANDING PAGE VENDEDORA ---
+  // --- LANDING PAGE ---
   if (tela === 'landing') {
     return (
       <div className="landing-container">
@@ -54,14 +53,13 @@ function App() {
           <button onClick={() => setTela('painel')} className="btn-outline">Área do Cliente</button>
         </nav>
 
-        {/* HERO SECTION */}
+        {/* HERO */}
         <header className="hero-section">
           <span className="tag-destaque">🔥 O Segredo dos Negócios Locais de Sucesso</span>
           <h1>Não adianta ter o melhor serviço se <br /><span className="destaque-texto">ninguém te encontra.</span></h1>
           <p className="subtitle">
             Transforme clientes em fãs que te colocam no <strong>Topo do Google</strong> automaticamente pelo WhatsApp.
           </p>
-          
           <div className="cta-group">
             <button 
               onClick={() => window.open(`https://wa.me/${whatsappVendas}?text=Quero%20dominar%20o%20Google%20com%20ReviewUp`, '_blank')} 
@@ -69,14 +67,42 @@ function App() {
             >
               QUERO VENDER MAIS ➤
             </button>
-            <p className="small-text">🔒 Garantia de 7 dias • Instalação Imediata</p>
           </div>
         </header>
 
-        {/* --- NOVA SEÇÃO VISUAL (O CELULAR) --- */}
+        {/* --- NOVA SEÇÃO: EXPLICAÇÃO COM PNL --- */}
+        <section className="section-explain">
+          <div className="explain-content">
+            <h2>Imagine ter uma <span className="text-highlight">Recepcionista Virtual</span> que trabalha 24h por dia...</h2>
+            <p className="explain-text">
+              Você atende bem, o cliente sai feliz, mas <strong>a correria do dia a dia faz ele esquecer de te avaliar.</strong> 
+              O ReviewUp elimina esse problema.
+            </p>
+            
+            <div className="explain-grid">
+              <div className="explain-item">
+                <div className="big-number">1</div>
+                <h4>Você Atende</h4>
+                <p>Faça o seu trabalho excelente normalmente.</p>
+              </div>
+              <div className="explain-item">
+                <div className="big-number">2</div>
+                <h4>A Gente Lembra</h4>
+                <p>Digite o número dele no sistema e nosso robô envia o pedido na hora.</p>
+              </div>
+              <div className="explain-item">
+                <div className="big-number">3</div>
+                <h4>O Google Sobe</h4>
+                <p>O cliente avalia com 1 clique e sua nota dispara.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* VISUAL (CELULAR) */}
         <section className="section-visual">
-          <h2>Veja a mágica acontecendo no celular do seu cliente 📲</h2>
-          <p className="visual-subtitle">É assim que ele recebe, 30 segundos depois de sair da sua loja.</p>
+          <h2>Veja a mágica acontecendo no celular do cliente 📲</h2>
+          <p className="visual-subtitle">É assim que ele recebe: personalizado, educado e impossível de ignorar.</p>
           
           <div className="phone-mockup">
             <div className="phone-screen">
@@ -100,43 +126,22 @@ function App() {
           </div>
         </section>
 
-        {/* DOR E PROBLEMA */}
-        <section className="section-dark">
-          <h2>Você está deixando dinheiro na mesa?</h2>
-          <div className="grid-benefits">
-            <div className="benefit-card">
-              <h3>📉 Invisível no Mapa</h3>
-              <p>Sem avaliações novas, o Google joga sua empresa para o final da fila. Clientes novos não te acham.</p>
-            </div>
-            <div className="benefit-card">
-              <h3>😶 Vergonha de Pedir</h3>
-              <p>É chato pedir avaliação na hora de pagar. Com o ReviewUp, nosso robô pede de forma educada e automática.</p>
-            </div>
-            <div className="benefit-card">
-              <h3>⭐ Autoridade</h3>
-              <p>Quem tem 4.9 estrelas vende mais caro e vende mais fácil. Reputação é dinheiro no bolso.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* OFERTA IRRECUSÁVEL */}
+        {/* PREÇO */}
         <section className="section-pricing">
           <div className="pricing-box">
-            <div className="desconto-tag">OFERTA ANUAL (R$ 1,30 por dia)</div>
+            <div className="desconto-tag">OFERTA ANUAL</div>
             <h3>Plano Business Anual</h3>
             <div className="price-container">
               <span className="riscado">De R$ 997</span>
               <span className="valor">R$ 500</span>
               <span className="periodo">/ano</span>
             </div>
-            
             <ul className="check-list">
               <li>✅ <strong>Automação Total:</strong> Envie em 1 clique</li>
               <li>✅ <strong>WhatsApp Incluso:</strong> Sem custos extras</li>
               <li>✅ <strong>Suporte VIP:</strong> Ajuda humanizada</li>
               <li>🎁 <strong>Bônus:</strong> Análise do seu Perfil Google</li>
             </ul>
-
             <button 
               onClick={() => window.open(`https://wa.me/${whatsappVendas}?text=Quero%20aproveitar%20a%20oferta%20de%20500`, '_blank')} 
               className="btn-cta-full"
@@ -154,31 +159,17 @@ function App() {
     )
   }
 
-  // --- PAINEL DO CLIENTE ---
+  // --- PAINEL ---
   return (
     <div className="painel-container">
       <div className="card">
         <h2>🚀 Painel de Envio</h2>
         <p>Preencha os dados para disparar.</p>
-        <div className="input-group">
-          <label>Senha de Acesso</label>
-          <input type="password" value={senha} onChange={e => setSenha(e.target.value)} />
-        </div>
-        <div className="input-group">
-          <label>Nome do Cliente</label>
-          <input type="text" placeholder="Ex: João" value={nome} onChange={e => setNome(e.target.value)} />
-        </div>
-        <div className="input-group">
-          <label>WhatsApp</label>
-          <input type="text" value={telefone} onChange={e => setTelefone(e.target.value)} />
-        </div>
-        <div className="input-group">
-          <label>Link do Google</label>
-          <input type="text" value={link} onChange={e => setLink(e.target.value)} />
-        </div>
-        <button className="btn-enviar" onClick={enviarMensagem} disabled={loading}>
-          {loading ? 'Enviando...' : 'ENVIAR ZAP ➤'}
-        </button>
+        <div className="input-group"><label>Senha de Acesso</label><input type="password" value={senha} onChange={e => setSenha(e.target.value)} /></div>
+        <div className="input-group"><label>Nome do Cliente</label><input type="text" placeholder="Ex: João" value={nome} onChange={e => setNome(e.target.value)} /></div>
+        <div className="input-group"><label>WhatsApp</label><input type="text" value={telefone} onChange={e => setTelefone(e.target.value)} /></div>
+        <div className="input-group"><label>Link do Google</label><input type="text" value={link} onChange={e => setLink(e.target.value)} /></div>
+        <button className="btn-enviar" onClick={enviarMensagem} disabled={loading}>{loading ? 'Enviando...' : 'ENVIAR ZAP ➤'}</button>
         <button onClick={() => setTela('landing')} className="btn-voltar">Voltar</button>
       </div>
     </div>
