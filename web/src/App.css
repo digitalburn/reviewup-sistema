@@ -1,95 +1,98 @@
-/* Reset Básico */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+import React from 'react';
+import './App.css';
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  min-height: 100vh; /* Garante altura total da tela */
-  width: 100%;
-  display: flex;
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  padding: 20px; /* Margem de segurança para não colar nas bordas */
-}
+export default function Landing({ onLogin }) {
+  // 👇 COLOQUE O ZAP DA ANDREIA AQUI (SÓ NÚMEROS)
+  const whatsappVendas = "5511992515440"; 
 
-/* O Cartão Central */
-.card {
-  background: #ffffff;
-  padding: 30px 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  width: 100%;
-  max-width: 400px; /* Tamanho ideal para celular */
-  text-align: center;
-  margin: auto; /* Reforço para centralizar */
-}
+  const irParaZap = () => {
+    const texto = "Olá! Vi o site do ReviewUp e quero aproveitar a oferta de R$ 500 anual.";
+    window.open(`https://wa.me/${whatsappVendas}?text=${encodeURIComponent(texto)}`, '_blank');
+  };
 
-/* Títulos */
-h1 {
-  color: #0f172a;
-  margin-bottom: 5px;
-  font-size: 24px;
-}
+  return (
+    <div className="landing-page">
+      {/* --- MENU SUPERIOR --- */}
+      <nav className="navbar">
+        <div className="logo">
+          🚀 ReviewUp <span className="beta-badge">BETA</span>
+        </div>
+        <button onClick={onLogin} className="btn-login-nav">
+          Área do Cliente
+        </button>
+      </nav>
 
-p {
-  color: #64748b;
-  margin-bottom: 25px;
-  font-size: 14px;
-}
+      {/* --- HERO (CABEÇALHO) --- */}
+      <header className="hero-section">
+        <div className="hero-content">
+          <span className="tag-destaque">🔥 Novidade Exclusiva para Negócios Locais</span>
+          <h1>
+            Seu Cliente esquece de avaliar? <br />
+            <span className="text-gradient">O ReviewUp lembra.</span>
+          </h1>
+          <p className="hero-subtitle">
+            Automatize seus pedidos de avaliação no Google. Suba no ranking, passe os concorrentes e venda mais. Tudo pelo WhatsApp.
+          </p>
+          <div className="hero-buttons">
+            <button onClick={irParaZap} className="btn-cta-primary">QUERO TESTAR AGORA ➤</button>
+            <button onClick={onLogin} className="btn-cta-secondary">JÁ SOU CLIENTE</button>
+          </div>
+          <p className="disclaimer">🔒 Satisfação garantida ou seu dinheiro de volta.</p>
+        </div>
+      </header>
 
-/* Campos */
-.campo-grupo {
-  margin-bottom: 15px;
-  text-align: left;
-}
+      {/* --- COMO FUNCIONA --- */}
+      <section className="steps-section">
+        <h2>Como funciona a mágica?</h2>
+        <div className="steps-grid">
+          <div className="step-card">
+            <div className="icon">1️⃣</div>
+            <h3>Você Digita</h3>
+            <p>Coloque o nome e WhatsApp do cliente no nosso painel simples.</p>
+          </div>
+          <div className="step-card">
+            <div className="icon">2️⃣</div>
+            <h3>O Robô Envia</h3>
+            <p>Nosso sistema envia uma mensagem personalizada e educada na hora.</p>
+          </div>
+          <div className="step-card">
+            <div className="icon">3️⃣</div>
+            <h3>O Cliente Avalia</h3>
+            <p>Ele clica no link e te dá 5 estrelas no Google em segundos.</p>
+          </div>
+        </div>
+      </section>
 
-label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 5px;
-}
+      {/* --- PREÇO (OERTA DE R$ 500) --- */}
+      <section className="pricing-section">
+        <div className="pricing-card">
+          <div className="badge-promo">OFERTA DE LANÇAMENTO</div>
+          <h3>Plano Anual Pro</h3>
+          <div className="price-tag">
+            <span className="currency">R$</span>
+            <span className="amount">500</span>
+            <span className="period">/ano</span>
+          </div>
+          <p className="price-subtitle">Isso dá apenas <strong>R$ 41,00 por mês</strong>.</p>
+          
+          <ul className="features-list">
+            <li>✅ Envios Ilimitados de WhatsApp</li>
+            <li>✅ Painel de Gestão Completo</li>
+            <li>✅ Suporte Prioritário no Zap</li>
+            <li>✅ Sem fidelidade (Cancele quando quiser)</li>
+            <li>🎁 <strong>Bônus:</strong> Consultoria de Perfil Google</li>
+          </ul>
 
-input {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 16px; /* 16px evita zoom indesejado no iPhone */
-  outline: none;
-  background: #f8fafc;
-}
+          <button onClick={irParaZap} className="btn-cta-price">GARANTIR ESSA OFERTA</button>
+          <p className="price-footer">Oferta válida para os primeiros 20 clientes.</p>
+        </div>
+      </section>
 
-input:focus {
-  border-color: #2563eb;
-  background: #fff;
-}
-
-/* Botão */
-.btn-enviar {
-  width: 100%;
-  padding: 16px;
-  background-color: #10b981;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: transform 0.1s;
-}
-
-.btn-enviar:active {
-  transform: scale(0.98); /* Efeito de clique */
-}
-
-.btn-enviar:disabled {
-  background-color: #94a3b8;
-  cursor: not-allowed;
+      {/* --- RODAPÉ --- */}
+      <footer className="footer">
+        <p>© 2025 ReviewUp Tecnologia. Todos os direitos reservados.</p>
+        <p>Feito para alavancar negócios locais.</p>
+      </footer>
+    </div>
+  );
 }
