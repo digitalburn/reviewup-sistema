@@ -150,4 +150,19 @@ function App() {
 
   // --- PAINEL ---
   return (
-    <div className="painel-container"></div>
+    <div className="painel-container">
+      <div className="card">
+        <h2>🚀 Área do Cliente</h2>
+        <p>Preencha os dados para disparar.</p>
+        <div className="input-group"><label>Senha de Acesso</label><input type="password" value={senha} onChange={e => setSenha(e.target.value)} /></div>
+        <div className="input-group"><label>Nome do Cliente</label><input type="text" placeholder="Ex: João" value={nome} onChange={e => setNome(e.target.value)} /></div>
+        <div className="input-group"><label>WhatsApp</label><input type="text" value={telefone} onChange={e => setTelefone(e.target.value)} /></div>
+        <div className="input-group"><label>Link do Google</label><input type="text" value={link} onChange={e => setLink(e.target.value)} /></div>
+        <button className="btn-enviar" onClick={enviarMensagem} disabled={loading}>{loading ? 'Enviando...' : 'ENVIAR ZAP ➤'}</button>
+        <button onClick={() => setTela('landing')} className="btn-voltar">Voltar</button>
+      </div>
+    </div>
+  )
+}
+
+export default App
